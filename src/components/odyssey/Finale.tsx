@@ -54,7 +54,7 @@ export function Finale({ onPassport, onCertificate }: { onPassport: () => void; 
         </div>
       </motion.div>
       <p className="mt-16 text-center text-sm font-semibold text-muted-foreground">
-        Made for curious kids everywhere · Mission facts based on NASA history 🚀
+        Made for curious kids everywhere · Mission facts based on NASA history
       </p>
     </section>
   );

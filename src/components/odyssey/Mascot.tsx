@@ -19,16 +19,16 @@ export function Mascot() {
   const who = s.name ? s.name : "explorer";
 
   const messages: Record<typeof active, string> = {
-    earth: s.name ? `Hi ${s.name}! I'm Bleep. Scroll down and I'll fly with you! 🚀` : "Hi! I'm Bleep, your robot guide. Type your explorer name up there! 👆",
-    moon: "Tap “Mission Details” and the spaceships will TALK to you! 🗣️",
+    earth: s.name ? `Hi ${s.name}! I'm Bleep. Scroll down and I'll fly with you!` : "Hi! I'm Bleep, your robot guide. Type your explorer name up there!",
+    moon: "Tap “Mission Details” and the spaceships will TALK to you!",
     mars:
       starsLeft > 0
         ? `Psst, ${who}… ${starsLeft} secret stars ⭐ are hiding on this page. Can you spot them?`
-        : `WOW, you found every secret star! You have super eyes, ${who}! 👀`,
-    "deep-space": left > 0 ? `We're SO far from home! Only ${left} more sticker${left === 1 ? "" : "s"} to go! 🌌` : "You've got every sticker! Fly to the finish line! 🏁",
+        : `WOW, you found every secret star! You have super eyes, ${who}!`,
+    "deep-space": left > 0 ? `We're SO far from home! Only ${left} more sticker${left === 1 ? "" : "s"} to go!` : "You've got every sticker! Fly to the finish line!",
     finale: isCertified(s, ALL_MISSIONS.map((m) => m.id))
-      ? `You did it, ${who}! Grab your certificate! 🏆`
-      : "So close! Open your passport to find the missing stickers. 🔍",
+      ? `You did it, ${who}! Grab your certificate!`
+      : "So close! Open your passport to find the missing stickers.",
   };
 
   // Pop up with a fresh tip on every new section, then tuck away so it never blocks reading.

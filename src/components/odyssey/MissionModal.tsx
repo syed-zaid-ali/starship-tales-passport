@@ -126,7 +126,7 @@ function FunFact({ mission, dark }: { mission: Mission; dark?: boolean }) {
           </motion.span>
           <span>
             <span className="block font-display text-xl font-bold">Tap to unlock the secret Fun Fact!</span>
-            <span className="text-sm font-bold opacity-75">{already ? "You already own this sticker ✓" : "…and win the mission sticker 🏅"}</span>
+            <span className="text-sm font-bold opacity-75">{already ? "You already own this sticker" : "…and win the mission sticker"}</span>
           </span>
         </motion.button>
       ) : (
@@ -203,7 +203,7 @@ function StoryChat({ mission }: { mission: Mission }) {
             What happens next? <ChevronRight />
           </Button>
         )}
-        {done && <span className="font-display text-sm font-bold opacity-60">The end! ✨</span>}
+        {done && <span className="font-display text-sm font-bold opacity-60">The end!</span>}
       </div>
     </div>
   );
