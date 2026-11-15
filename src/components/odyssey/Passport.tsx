@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Lock, Printer, RotateCcw, Star, Trophy } from "lucide-react";
+import { CircleCheck, CircleHelp, Lock, Printer, RotateCcw, Star, Trophy } from "lucide-react";
 import { useState } from "react";
 import bleep from "@/assets/bleep-mascot.jpg";
 import { Button } from "@/components/ui/button";
@@ -9,6 +9,8 @@ import { ALL_MISSIONS, CHAPTERS } from "@/data/missions";
 import { DEFAULT_STATE, isCertified, passportProgress, rankFor } from "@/lib/explorer";
 import { updateExplorer, useExplorer } from "@/lib/explorer-store";
 import { sfx } from "@/lib/sfx";
+import { RANK_ICON } from "./icons";
+import { MedalBadge } from "./MedalBadge";
 import { STAR_IDS, TONE } from "./tones";
 import { scrollToId } from "./use-active-section";
 
@@ -17,10 +19,11 @@ const MISSION_IDS = ALL_MISSIONS.map((m) => m.id);
 export function RankCard() {
   const s = useExplorer();
   const r = rankFor(s);
+  const RankIcon = RANK_ICON[r.icon];
   return (
     <div className="rounded-3xl border-2 border-border bg-muted p-4">
       <div className="flex items-center gap-3">
-        <span className="grid size-14 place-items-center rounded-2xl bg-launch text-3xl">{r.emoji}</span>
+        <span className="grid size-14 place-items-center rounded-2xl bg-launch"><RankIcon className="size-8" /></span>
         <div className="flex-1">
           <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Your rank</p>
           <p className="font-display text-2xl font-bold leading-tight">{r.title}</p>
@@ -34,7 +37,7 @@ export function RankCard() {
         <motion.div initial={{ width: 0 }} animate={{ width: `${r.pct}%` }} transition={{ type: "spring", stiffness: 60 }} className="h-full rounded-full bg-launch" />
       </div>
       <p className="mt-2 text-sm font-semibold text-muted-foreground">
-        {r.next ? `${r.toNext} more points to become a ${r.next.title} ${r.next.emoji}` : "Top rank reached — you're a legend! 🌟"}
+        {r.next ? `${r.toNext} more points to become a ${r.next.title}` : "Top rank reached — you're a legend!"}
       </p>
     </div>
   );
@@ -99,12 +102,19 @@ export function Passport({ open, onOpenChange, onCertificate }: { open: boolean;
           ))}
         </div>
 
-        <h3 className="mt-6 font-display text-lg font-bold">Pop quizzes</h3>
+        <h3 className="mt-6 font-display text-lg font-bold">Chapter challenges</h3>
         <ul className="mt-2 space-y-1.5">
           {CHAPTERS.map((c) => (
             <li key={c.id} className="flex items-center justify-between rounded-xl bg-muted px-3 py-2 text-sm font-bold">
               {c.title}
-              <span>{s.quizzes.includes(c.id) ? "✅ Solved" : "❔ Not yet"}</span>
+              {s.games[c.game.id]?.done ? (
+                <span className="flex items-center gap-2">
+                  {s.games[c.game.id]?.medal ? <MedalBadge medal={s.games[c.game.id]?.medal ?? null} size="sm" /> : <CircleCheck className="size-5 text-primary" />}
+                  Done
+                </span>
+              ) : (
+                <span className="flex items-center gap-1 text-muted-foreground"><CircleHelp className="size-4" /> Not yet</span>
+              )}
             </li>
           ))}
         </ul>
@@ -112,14 +122,14 @@ export function Passport({ open, onOpenChange, onCertificate }: { open: boolean;
         <div className="mt-6 rounded-3xl border-2 border-dashed border-primary p-4 text-center">
           {certified ? (
             <>
-              <p className="font-display text-lg font-bold">Every sticker collected! 🎉</p>
+              <p className="font-display text-lg font-bold">Every sticker collected!</p>
               <Button variant="chunky" size="xl" className="mt-3 w-full" onClick={onCertificate}>
                 <Trophy /> Get my certificate
               </Button>
             </>
           ) : (
             <p className="font-display text-base font-semibold">
-              Collect <span className="text-primary">{left} more</span> mission sticker{left === 1 ? "" : "s"} to earn your Official Explorer Certificate 🏆
+              Collect <span className="text-primary">{left} more</span> mission sticker{left === 1 ? "" : "s"} to earn your Official Explorer Certificate
             </p>
           )}
         </div>
@@ -142,11 +152,12 @@ export function Certificate({ open, onOpenChange }: { open: boolean; onOpenChang
   const s = useExplorer();
   const [date] = useState(() => new Date().toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" }));
   const r = rankFor(s);
+  const RankIcon = RANK_ICON[r.icon];
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="w-[calc(100vw-1.5rem)] max-w-2xl rounded-4xl border-0 bg-transparent p-0 shadow-none sm:rounded-4xl">
         <div className="print-area chat-surface rounded-4xl border-8 border-double border-tone-sun-deep p-8 text-center md:p-12">
-          <p className="font-display text-sm font-bold uppercase tracking-[0.3em] text-tone-sun-deep">Odyssey Space Academy</p>
+          <p className="font-display text-sm font-bold uppercase tracking-[0.3em] text-tone-sun-deep">Forgotten Tales Space Academy</p>
           <DialogTitle className="mt-3 font-display text-4xl font-bold md:text-5xl">Official Explorer Certificate</DialogTitle>
           <DialogDescription className="mt-4 text-base font-semibold text-ink/70">This certifies that</DialogDescription>
           <p className="mt-2 font-display text-5xl font-bold text-tone-pink-deep md:text-6xl">{s.name || "Explorer"}</p>
@@ -154,7 +165,7 @@ export function Certificate({ open, onOpenChange }: { open: boolean; onOpenChang
             travelled to the Moon, Mars and Deep Space, met {ALL_MISSIONS.length} amazing spacecraft, and earned the rank of
           </p>
           <p className="mt-2 font-display text-3xl font-bold">
-            {r.emoji} {r.title}
+            <span className="inline-flex items-center gap-2"><RankIcon className="size-8" /> {r.title}</span>
           </p>
           <div className="mt-8 flex items-end justify-between gap-4 text-left">
             <div>

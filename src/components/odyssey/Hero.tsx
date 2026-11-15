@@ -135,10 +135,10 @@ export function Hero() {
     <section id="earth" ref={ref} className={`relative ${reduce ? "" : "h-[260svh]"}`}>
       <div className="sticky top-0 h-svh min-h-[40rem] overflow-hidden">
         {/* Sky slowly turns from candy-pink morning to dreamy space lilac */}
-        <motion.div aria-hidden style={m && { opacity: dusk }} className="absolute inset-0 bg-[linear-gradient(180deg,oklch(0.82_0.07_285),oklch(0.86_0.06_260)_60%,transparent)]" />
+        <motion.div aria-hidden style={!m ? {} : { opacity: dusk }} className="absolute inset-0 bg-[linear-gradient(180deg,oklch(0.82_0.07_285),oklch(0.86_0.06_260)_60%,transparent)]" />
 
         {/* Speed lines once we're flying */}
-        <motion.div aria-hidden style={m && { opacity: speedLines }} className="pointer-events-none absolute inset-0">
+        <motion.div aria-hidden style={!m ? {} : { opacity: speedLines }} className="pointer-events-none absolute inset-0">
           {Array.from({ length: 14 }, (_, i) => (
             <span
               key={i}
@@ -160,20 +160,20 @@ export function Hero() {
           initial={{ scale: 0.6, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          style={m && { y: earthY, scale: earthScale, rotate: earthRotate }}
+          style={!m ? {} : { y: earthY, scale: earthScale, rotate: earthRotate }}
           className="feather-mask pointer-events-none absolute -bottom-44 -right-36 w-[34rem] max-w-none md:-right-24 md:w-[46rem]"
         />
 
         {/* Cloud curtains */}
-        <motion.div style={m && { x: leftClouds, scale: cloudScale }} className="pointer-events-none absolute -left-24 top-[18%] w-[26rem] md:w-[34rem]">
+        <motion.div style={!m ? {} : { x: leftClouds, scale: cloudScale }} className="pointer-events-none absolute -left-24 top-[18%] w-[26rem] md:w-[34rem]">
           <Cloud className="w-full animate-drift" />
           <Cloud className="-mt-10 ml-40 w-2/3" tint="bg-tone-pink" />
         </motion.div>
-        <motion.div style={m && { x: rightClouds, scale: cloudScale }} className="pointer-events-none absolute -right-28 top-[8%] w-[22rem] md:w-[30rem]">
+        <motion.div style={!m ? {} : { x: rightClouds, scale: cloudScale }} className="pointer-events-none absolute -right-28 top-[8%] w-[22rem] md:w-[30rem]">
           <Cloud className="w-full" tint="bg-tone-sky" />
           <Cloud className="-mt-8 w-1/2 animate-drift" />
         </motion.div>
-        <motion.div style={m && { y: floorClouds }} className="pointer-events-none absolute inset-x-0 -bottom-16 z-20 flex justify-center gap-0">
+        <motion.div style={!m ? {} : { y: floorClouds }} className="pointer-events-none absolute inset-x-0 -bottom-16 z-20 flex justify-center gap-0">
           <Cloud className="-mr-16 w-[22rem]" />
           <Cloud className="-mr-16 w-[28rem]" tint="bg-tone-moon" />
           <Cloud className="w-[24rem]" />
@@ -182,7 +182,7 @@ export function Hero() {
         {/* The rocket blasting off through the middle */}
         <motion.div
           aria-hidden
-          style={m && { y: rocketY, scale: rocketScale, rotate: rocketRotate }}
+          style={!m ? {} : { y: rocketY, scale: rocketScale, rotate: rocketRotate }}
           className="pointer-events-none absolute left-1/2 top-0 z-10 -ml-14 w-28 md:-ml-20 md:w-40"
           initial={false}
         >
@@ -194,7 +194,7 @@ export function Hero() {
         <HiddenStar id="hero" className="right-[12%] top-[22%]" />
 
         {/* Mid-flight caption */}
-        <motion.div style={m && { opacity: captionOpacity, scale: captionScale }} className="pointer-events-none absolute inset-x-0 top-[16%] z-30 px-5 text-center" initial={{ opacity: 0 }}>
+        <motion.div style={!m ? {} : { opacity: captionOpacity, scale: captionScale }} className="pointer-events-none absolute inset-x-0 top-[16%] z-30 px-5 text-center" initial={{ opacity: 0 }}>
           <p className="mx-auto inline-flex items-center gap-2 rounded-full bg-card px-4 py-1.5 font-display text-sm font-bold uppercase tracking-widest text-primary shadow-card-pop">
             <Sparkles className="size-4" /> Time machine on
           </p>
@@ -205,7 +205,7 @@ export function Hero() {
         </motion.div>
 
         {/* Title + name form */}
-        <motion.div style={m && { scale: titleScale, opacity: titleOpacity, y: titleY }} className="relative z-30 flex h-full items-center px-5 pb-24 pt-36 md:pt-24">
+        <motion.div style={!m ? {} : { scale: titleScale, opacity: titleOpacity, y: titleY }} className="relative z-30 flex h-full items-center px-5 pb-24 pt-36 md:pt-24">
           <div className="mx-auto grid w-full min-w-0 max-w-6xl grid-cols-[minmax(0,1fr)] items-center gap-10 md:grid-cols-[minmax(0,1fr)_auto]">
             <div>
               <motion.p
@@ -271,7 +271,7 @@ export function Hero() {
               initial={{ x: 120, opacity: 0, rotate: 20 }}
               animate={{ x: 0, opacity: 1, rotate: 0 }}
               transition={{ type: "spring", stiffness: 80, damping: 12, delay: 0.8 }}
-              style={m && { y: bleepY, rotate: bleepRotate }}
+              style={!m ? {} : { y: bleepY, rotate: bleepRotate }}
               className="relative hidden self-start md:block md:pt-24"
             >
               <div className="relative animate-float">
@@ -286,7 +286,7 @@ export function Hero() {
 
         <motion.button
           type="button"
-          style={m && { opacity: cueOpacity }}
+          style={!m ? {} : { opacity: cueOpacity }}
           onClick={() => scrollToId("moon")}
           className="absolute bottom-6 left-1/2 z-40 flex -translate-x-1/2 cursor-pointer flex-col items-center gap-1 font-display text-sm font-bold uppercase tracking-widest text-primary-deep"
         >

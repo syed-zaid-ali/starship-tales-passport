@@ -60,10 +60,10 @@ describe("mini-game medals", () => {
     expect(medalFor(2)).toBe("silver");
     expect(medalFor(3)).toBe("bronze");
     expect(medalFor(4)).toBeNull();
-    expect(winOnTry(1).games.g?.medal).toBe("gold");
-    expect(winOnTry(2).games.g?.medal).toBe("silver");
-    expect(winOnTry(3).games.g?.medal).toBe("bronze");
-    expect(winOnTry(5).games.g).toEqual({ attempts: 5, done: true, medal: null });
+    expect(winOnTry(1).games["g"]?.medal).toBe("gold");
+    expect(winOnTry(2).games["g"]?.medal).toBe("silver");
+    expect(winOnTry(3).games["g"]?.medal).toBe("bronze");
+    expect(winOnTry(5).games["g"]).toEqual({ attempts: 5, done: true, medal: null });
   });
 
   it("replaying a finished game never changes the medal", () => {

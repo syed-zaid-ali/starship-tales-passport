@@ -43,7 +43,7 @@ function Result({ game, won, attempts, retry }: { game: ChapterGame; won: boolea
     <motion.div initial={{ opacity: 0, scale: 0.86 }} animate={{ opacity: 1, scale: 1 }} className="mt-5 flex flex-wrap items-center gap-4 rounded-3xl border-2 border-primary/20 bg-muted p-4">
       <MedalBadge medal={medal} size="md" finished />
       <div className="min-w-0 flex-1">
-        <p className="font-display text-xl font-bold">{won ? medal ? `${medal[0].toUpperCase()}${medal.slice(1)} medal earned!` : "Challenge complete!" : "A bumpy landing — try again!"}</p>
+        <p className="font-display text-xl font-bold">{won ? medal ? `${medal.charAt(0).toUpperCase()}${medal.slice(1)} medal earned!` : "Challenge complete!" : "A bumpy landing — try again!"}</p>
         <p className="font-semibold text-muted-foreground">{won ? medal ? `You did it on try ${attempts}. Your medal is saved in your explorer record.` : `You finished in ${attempts} tries. Medals are earned in the first three tries.` : `Try ${attempts + 1} is a fresh start. You can do it!`}</p>
       </div>
       {!won && <Button variant="chunky" onClick={retry}><RotateCcw /> Try again</Button>}
@@ -76,7 +76,7 @@ function ChallengeGame({ chapter }: { chapter: Chapter }) {
     firing.current = false;
     if (success) {
       const medal = gameRecord(next, game.id).medal;
-      celebrate({ icon: medal ?? "finish", title: medal ? `${medal[0].toUpperCase()}${medal.slice(1)} medal!` : "Challenge complete!", subtitle: medal ? `Earned on try ${count}` : `Finished in ${count} tries`, big: true });
+      celebrate({ icon: medal ?? "finish", title: medal ? `${medal.charAt(0).toUpperCase()}${medal.slice(1)} medal!` : "Challenge complete!", subtitle: medal ? `Earned on try ${count}` : `Finished in ${count} tries`, big: true });
     }
   };
 
@@ -120,7 +120,7 @@ function ChallengeGame({ chapter }: { chapter: Chapter }) {
     setPlaced(next);
     setSelected(null);
     setMessage(`That's right! ${item.why}`);
-    if (next.length === game.items.length) completeTry(true);
+    if (game.type === "sorting" && next.length === game.items.length) completeTry(true);
   };
 
   const beginFlight = () => {

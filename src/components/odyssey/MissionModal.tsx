@@ -99,7 +99,7 @@ function FunFact({ mission, dark }: { mission: Mission; dark?: boolean }) {
       sfx.win();
       const { collected, total } = passportProgress(getExplorer(), ALL_MISSIONS.length);
       celebrate({
-        emoji: "🏅",
+        icon: "sticker",
         title: "New sticker unlocked!",
         subtitle: `${mission.name} · ${collected} of ${total} in your passport`,
         big: true,
