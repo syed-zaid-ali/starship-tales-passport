@@ -1,0 +1,11 @@
+# Forgotten Tales roadmap
+- [x] Rename Odyssey -> Forgotten Tales everywhere (title, header, certificate, meta, project name)
+- [x] Pastel cartoon theme (soft purples, baby blues, pastel pinks, rounded)
+- [x] Remove every emoji; lucide icons only
+- [x] Fix launch countdown: 3, 2, 1 then go
+- [x] Story Mode toggle in header (keep) + new exact dialogue
+- [x] Strict chronological timeline: Moon (1967-71) -> Deep Space (1972-77) -> Mars (1997-2021)
+- [x] Mini-games: Landing (Moon), Quiz (Deep Space), Sorting (Mars) with attempt-based medals
+- [x] Medals shown on game completion screens, passport, finale, certificate
+- [x] Legendary scroll effects: hero lift-off scene, pinned planet zoom chapter intros, parallax years, velocity marquee, time-machine year counter, comet timeline
+- [x] Tests: medal rule, chronology, lander physics

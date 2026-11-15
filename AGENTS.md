@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Odyssey app
+- Explorer progress (name, stickers, stars, quizzes, Story Mode, sound) lives in `src/lib/explorer-store.ts` (localStorage via useSyncExternalStore); game rules are pure functions in `src/lib/explorer.ts` with tests — keep rules there so they stay testable.
+- Mission/chapter content is data-only in `src/data/missions.ts`; components in `src/components/odyssey/` render it — add missions by editing data, not components.
+- Per-tone Tailwind classes come from the literal map in `src/components/odyssey/tones.ts`; never build tone class names dynamically (Tailwind can't see them).
