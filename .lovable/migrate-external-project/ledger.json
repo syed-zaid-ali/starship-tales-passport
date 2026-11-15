@@ -1,19 +1,110 @@
 {
-  "source": "code-archive: wonderquest-scroll-main.zip (Lovable TanStack Start project)",
-  "capabilities": [
-    {"capability": "code", "source": "src/ (routes, odyssey components, data, lib, ui)", "outcome": "migrate", "status": "pending", "next_action": "copy source into project"},
-    {"capability": "assets", "source": "src/assets/*.jpg, rocket.png, public/", "outcome": "migrate", "status": "pending", "next_action": "copy assets"},
-    {"capability": "dependencies", "source": "package.json (+framer-motion 14.14.0)", "outcome": "migrate", "status": "pending", "next_action": "bun add framer-motion@14.14.0"},
-    {"capability": "schema", "source": "none detected", "outcome": "not-applicable", "status": "verified", "next_action": "none"},
-    {"capability": "records", "source": "none; explorer progress stored per-browser in localStorage", "outcome": "not-applicable", "status": "verified", "next_action": "none"},
-    {"capability": "auth identities", "source": "none detected", "outcome": "not-applicable", "status": "verified", "next_action": "none"},
-    {"capability": "authorization", "source": "none detected", "outcome": "not-applicable", "status": "verified", "next_action": "none"},
-    {"capability": "uploaded file bytes", "source": "none", "outcome": "not-applicable", "status": "verified", "next_action": "none"},
-    {"capability": "external providers", "source": "Google Fonts link only", "outcome": "preserve", "status": "pending", "next_action": "keep font links in root head"},
-    {"capability": "public endpoints/callbacks/webhooks/schedules", "source": "none", "outcome": "not-applicable", "status": "verified", "next_action": "none"},
-    {"capability": "secrets", "source": "no env vars referenced", "outcome": "not-applicable", "status": "verified", "next_action": "none"},
-    {"capability": "tests", "source": "src/lib/explorer.test.ts, src/test/app-routing.test.tsx", "outcome": "migrate", "status": "pending", "next_action": "run vitest"},
-    {"capability": "cutover", "source": "source was unpublished archive", "outcome": "publish when ready", "status": "pending", "next_action": "user publishes"},
-    {"capability": "verification", "source": "build, tests, browser run", "outcome": "verify", "status": "pending", "next_action": "run checks"}
-  ]
+ "source": "code-archive: wonderquest-scroll-main.zip (Lovable TanStack Start project)",
+ "capabilities": [
+  {
+   "capability": "code",
+   "source": "src/ (routes, odyssey components, data, lib, ui)",
+   "outcome": "migrate",
+   "status": "verified",
+   "next_action": "none"
+  },
+  {
+   "capability": "assets",
+   "source": "src/assets/*.jpg, rocket.png, public/",
+   "outcome": "migrate",
+   "status": "verified",
+   "next_action": "none"
+  },
+  {
+   "capability": "dependencies",
+   "source": "package.json (+framer-motion 14.14.0)",
+   "outcome": "migrate",
+   "status": "verified",
+   "next_action": "none"
+  },
+  {
+   "capability": "schema",
+   "source": "none detected",
+   "outcome": "not-applicable",
+   "status": "verified",
+   "next_action": "none"
+  },
+  {
+   "capability": "records",
+   "source": "none; explorer progress stored per-browser in localStorage",
+   "outcome": "not-applicable",
+   "status": "verified",
+   "next_action": "none"
+  },
+  {
+   "capability": "auth identities",
+   "source": "none detected",
+   "outcome": "not-applicable",
+   "status": "verified",
+   "next_action": "none"
+  },
+  {
+   "capability": "authorization",
+   "source": "none detected",
+   "outcome": "not-applicable",
+   "status": "verified",
+   "next_action": "none"
+  },
+  {
+   "capability": "uploaded file bytes",
+   "source": "none",
+   "outcome": "not-applicable",
+   "status": "verified",
+   "next_action": "none"
+  },
+  {
+   "capability": "external providers",
+   "source": "Google Fonts link only",
+   "outcome": "preserve",
+   "status": "verified",
+   "next_action": "none"
+  },
+  {
+   "capability": "public endpoints/callbacks/webhooks/schedules",
+   "source": "none",
+   "outcome": "not-applicable",
+   "status": "verified",
+   "next_action": "none"
+  },
+  {
+   "capability": "secrets",
+   "source": "no env vars referenced",
+   "outcome": "not-applicable",
+   "status": "verified",
+   "next_action": "none"
+  },
+  {
+   "capability": "tests",
+   "source": "src/lib/explorer.test.ts, src/test/app-routing.test.tsx",
+   "outcome": "migrate",
+   "status": "verified",
+   "next_action": "none"
+  },
+  {
+   "capability": "cutover",
+   "source": "source was unpublished archive",
+   "outcome": "publish when ready",
+   "status": "pending",
+   "next_action": "user publishes"
+  },
+  {
+   "capability": "verification",
+   "source": "build, tests, browser run",
+   "outcome": "verify",
+   "status": "verified",
+   "next_action": "none"
+  },
+  {
+   "capability": "source fixes",
+   "source": "source had unfinished refactor (emoji->icon, quizzes->games) causing 23 type errors",
+   "outcome": "fixed",
+   "status": "verified",
+   "next_action": "none"
+  }
+ ]
 }
