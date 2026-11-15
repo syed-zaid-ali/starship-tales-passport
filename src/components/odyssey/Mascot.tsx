@@ -23,7 +23,7 @@ export function Mascot() {
     moon: "Tap “Mission Details” and the spaceships will TALK to you!",
     mars:
       starsLeft > 0
-        ? `Psst, ${who}… ${starsLeft} secret stars ⭐ are hiding on this page. Can you spot them?`
+        ? `Psst, ${who}… ${starsLeft} secret stars are hiding on this page. Can you spot them?`
         : `WOW, you found every secret star! You have super eyes, ${who}!`,
     "deep-space": left > 0 ? `We're SO far from home! Only ${left} more sticker${left === 1 ? "" : "s"} to go!` : "You've got every sticker! Fly to the finish line!",
     finale: isCertified(s, ALL_MISSIONS.map((m) => m.id))
